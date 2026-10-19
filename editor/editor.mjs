@@ -694,9 +694,10 @@ window.motionPreview = {
 };
 try {
   setBusy(true);
-  const registry = await readJSON(new URL("../projects.json", import.meta.url));
+  const registryURL = new URL("../projects.json", import.meta.url);
+  const registry = await readJSON(registryURL);
   projects = registry.projects.map((p) => ({
-    url: new URL(p.manifest, location.href).href,
+    url: new URL(p.manifest, registryURL).href,
     label: p.label,
   }));
   projectOptions();

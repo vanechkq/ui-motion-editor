@@ -12,4 +12,4 @@ Dependencies remain dependencies, with upstream notices in installed packages. D
 
 Run `pnpm install --frozen-lockfile`, `pnpm exec playwright install chromium`, `pnpm test`, `pnpm test:browser`, `pnpm build` and the scene checks documented in README.md. GitHub Actions installs browser system dependencies and runs unit/browser checks and the static build on Linux.
 
-Video export runs locally. Publishing source to GitHub does not deploy a web service or publish an npm package. See VALIDATION.md for local measurements and their limits.
+The browser editor is hosted at https://vanechkq.com/editor on the owner's existing Yandex static hosting. Video export runs locally. Source updates on GitHub do not automatically upload a new hosted build or publish an npm package. See VALIDATION.md for local measurements and their limits.

@@ -102,7 +102,7 @@ test("editor connects projects, applies variables, drags, loops, saves and shows
     await page.getByRole("button", { name: "Сохранить", exact: true }).click();
     const download = await downloaded;
     const config = JSON.parse(await fs.readFile(await download.path(), "utf8"));
-    assert.equal(config.project, "/projects/cards/motion.project.json");
+    assert.equal(config.project, "./projects/cards/motion.project.json");
     assert.equal(config.schema, 1);
     await page.setViewportSize({ width: 390, height: 760 });
     await page.getByRole("button", { name: "Параметры", exact: true }).click();

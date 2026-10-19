@@ -1,5 +1,7 @@
 # UI Motion Editor
 
+Open the hosted editor: **https://vanechkq.com/editor**.
+
 A small local editor for scripted interface animation. HTML text, CSS shapes and SVG remain editable sources. Preview and MP4 export call the same random-access scene renderer. All compositions and videos use **60 fps**.
 
 Two self-contained examples are included: `projects/cards/` (640 × 480, card → details) and `projects/toggle/` (360 × 360, a setting changing state). Both use system fonts and inline SVG. The project is prepared locally; repository name, visibility and source license are still to be chosen by the owner.
@@ -134,3 +136,9 @@ See `VALIDATION.md` for this machine's measured results. They are observations, 
 ## License and development
 
 Original source is available under the [MIT license](LICENSE). Dependencies retain their own licenses; see [THIRD_PARTY.md](THIRD_PARTY.md). Run the documented unit/browser checks and build before pushing changes. GitHub Actions runs these checks on pull requests and pushes to `main`.
+
+## Static hosting under a path
+
+Build with `pnpm build --base /editor/` and upload `dist/` to `/editor/` on a static host. Both `/editor` and `/editor/` are supported when the host serves the entry HTML at those paths. Serve `.mjs` as `text/javascript` and JSON as `application/json`. Downloaded configs use project paths relative to the editor, so they also work in a local checkout.
+
+For the owner's existing Yandex hosting, `node tools/deploy-static.mjs` prints the exact editor-only upload plan. With `YC_ACCESS_KEY_ID` and `YC_SECRET_ACCESS_KEY` supplied securely in the process environment, add `--publish` to upload; `--verify-only` checks an existing deployment. The script verifies origin files and the public URL and compares the homepage, onboarding and feed entry bytes before and after. It does not list or delete other objects. Keep the current `dist/` mirrored under the portfolio's `public/editor/` before any future whole-site deployment so that its cleanup retains this section.

@@ -2,6 +2,12 @@
 
 Validated on macOS arm64 with Node 22+ compatible source, pnpm 11.25.0 and Playwright Chromium 141.0.7390.37. This records a local release candidate, not a claim about every browser or device.
 
+## Hosted editor — 19 October 2026
+
+Deployed static build to `https://vanechkq.com/editor`. All 28 uploaded objects (including the bare-path entry) matched their expected bytes and MIME types at origin. The public entry matched the build; portfolio, onboarding and feed entry hashes remained unchanged. A separate browser regression covers `/editor` and `/editor/`, both examples, timing, download and reload; current totals are 11 unit and 12 browser checks, all passing.
+
+The static build is mirrored in `vanechkq/vanechkq-portfolio` on `static-export` (commit `e30f6c6`) so future whole-site deployments retain `/editor/`. Its deployment MIME table now serves `.mjs` as JavaScript. No DNS changes were needed. Hosting credentials were loaded externally and were not copied into either repository.
+
 ## 100 ms editing update
 
 Action movement, both resize handles and numeric timing edits now use 100 ms steps with at most one decimal place. The targeted browser check also verifies rounding `1.066667` to `1.1`, ArrowUp advancing to `1.2`, draft retention and non-overlap. Internal rendering/export stays at 60 fps. This supersedes the earlier editor's frame-sized interaction step; imported/source timelines retain frame precision.
