@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Motion project v1",
+  "type": "object",
+  "required": ["schema", "name", "label", "composition", "scene", "timeline"],
+  "properties": {
+    "schema": { "const": 1 },
+    "name": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "label": { "type": "string", "minLength": 1 },
+    "scene": { "type": "string", "pattern": "^\\./[\\w./-]+$" },
+    "timeline": { "type": "string", "pattern": "^\\./[\\w./-]+$" },
+    "baseURL": {
+      "type": "string",
+      "description": "Required only when importing a loose manifest JSON into the editor"
+    },
+    "loop": { "type": "boolean" },
+    "composition": {
+      "type": "object",
+      "required": ["width", "height", "fps", "exportScale"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 16, "maximum": 8192 },
+        "height": { "type": "integer", "minimum": 16, "maximum": 8192 },
+        "fps": { "const": 60 },
+        "exportScale": { "type": "number", "minimum": 0.1, "maximum": 6 }
+      }
+    },
+    "editor": {
+      "type": "object",
+      "required": ["groups"],
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "fields"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "label": { "type": "string", "minLength": 1 },
+              "fields": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/field" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "field": {
+      "type": "object",
+      "required": ["path", "label", "type"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[a-zA-Z]\\w*(\\.[a-zA-Z]\\w*)*$"
+        },
+        "label": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["number", "range", "textarea", "color", "preset"] },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "step": {
+          "oneOf": [
+            { "type": "number", "exclusiveMinimum": 0 },
+            { "const": "any" }
+          ]
+        },
+        "rows": { "type": "integer", "minimum": 1 },
+        "unit": { "type": "string" },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "value"],
+            "properties": {
+              "label": { "type": "string" },
+              "value": { "type": "object" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI Motion config envelope v1",
+  "type": "object",
+  "required": ["schema", "project", "config"],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "project": {
+      "type": "string",
+      "description": "Same-origin manifest pathname, e.g. /projects/cards/motion.project.json"
+    },
+    "config": {
+      "type": "object",
+      "description": "Declared editor fields, shared Tap fields, and timeline.actions overrides; validated against the project at runtime.",
+      "properties": {
+        "timeline": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "actions": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "minProperties": 1,
+                "additionalProperties": false,
+                "properties": {
+                  "from": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 3600
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 3600
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

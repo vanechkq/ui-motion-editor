@@ -1,0 +1,36 @@
+{
+  "name": "ui-motion-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "build": "node tools/build.mjs",
+    "check": "node tools/motion.mjs check",
+    "export": "node tools/motion.mjs export",
+    "motion": "node tools/motion.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node --test tests/*.browser.mjs",
+    "format": "prettier --write . --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "ffmpeg-static": "5.2.0",
+    "playwright": "1.56.1",
+    "pngjs": "7.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "prettier": "3.6.2"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "description": "Editable interface motion with a live timeline and reproducible 60 fps video export.",
+  "license": "MIT",
+  "author": "vanechkq",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanechkq/ui-motion-editor.git"
+  }
+}

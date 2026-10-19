@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "project": "/projects/cards/motion.project.json",
+  "config": {
+    "content": { "title": "План недели" },
+    "hold": { "details": 2.5 },
+    "tokens": { "tapIndicator": { "diameter": 48 } }
+  }
+}

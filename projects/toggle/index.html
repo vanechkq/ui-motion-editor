@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><link rel="icon" href="data:," /><title>Focus toggle</title
+  ><style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font:
+        16px/1.4 system-ui,
+        sans-serif;
+      color: #202123;
+    }
+    .stage {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      background: #eeefef;
+      padding: 28px;
+    }
+    .surface {
+      background: #fff;
+      border-radius: 24px;
+      padding: 26px;
+      height: 304px;
+    }
+    .icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: 25px;
+      letter-spacing: -0.7px;
+      margin: 0 0 12px;
+    }
+    p {
+      font-size: 14px;
+      color: #777;
+      margin: 0;
+      max-width: 210px;
+    }
+    .switch {
+      position: absolute;
+      right: 54px;
+      bottom: 55px;
+      border: 0;
+      padding: 4px;
+      width: 60px;
+      height: 34px;
+      border-radius: 20px;
+      background: #ddd;
+    }
+    .thumb {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 1px 3px #0002;
+    }
+    .status {
+      position: absolute;
+      left: 54px;
+      bottom: 62px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+  <div class="stage">
+    <div class="surface">
+      <svg class="icon" viewBox="0 0 44 44">
+        <circle
+          cx="22"
+          cy="22"
+          r="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <circle
+          cx="22"
+          cy="22"
+          r="8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </svg>
+      <h1>Focus time</h1>
+      <p>A small setting with a clear change of state.</p>
+      <span class="status">Off</span
+      ><button class="switch" aria-label="Focus">
+        <div class="thumb"></div>
+      </button>
+    </div>
+  </div>
+  <script type="module" src="scene.mjs"></script>
+</html>

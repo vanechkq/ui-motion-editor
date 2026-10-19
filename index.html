@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Motion Editor</title>
+    <link rel="stylesheet" href="editor/editor.css" />
+  </head>
+  <body>
+    <header>
+      <select id="project" aria-label="Проект"></select
+      ><button
+        id="connect"
+        class="icon-button"
+        aria-label="Подключить проект"
+        title="Подключить проект"
+      >
+        +
+      </button>
+      <div class="header-actions">
+        <button
+          id="settings"
+          class="outline settings-button"
+          aria-label="Параметры"
+          aria-controls="inspector-panel"
+          aria-expanded="false"
+        >
+          Параметры</button
+        ><button id="save" class="outline" title="Скачать параметры проекта">
+          Сохранить
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="viewer" aria-label="Предпросмотр" aria-busy="true">
+        <div class="screen-box">
+          <iframe title="Сцена" tabindex="-1" src="about:blank"></iframe>
+        </div>
+        <span class="loading" role="status" aria-label="Загрузка"></span>
+        <div id="scene-error" class="error" hidden>
+          <p id="scene-error-message" role="alert"></p>
+          <button id="dismiss-error" class="outline">Закрыть</button>
+        </div>
+      </section>
+      <aside id="inspector-panel" class="panel" aria-label="Параметры проекта">
+        <button
+          id="inspector-close"
+          class="icon-button"
+          aria-label="Закрыть параметры"
+          title="Закрыть параметры"
+        >
+          ×
+        </button>
+        <section
+          id="action-timing"
+          aria-label="Время выбранного действия"
+          hidden
+        ></section>
+        <div id="tabs" class="tabs" role="tablist" aria-label="Параметры"></div>
+        <form id="inspector" role="tabpanel"></form>
+        <div class="panel-bottom">
+          <button
+            id="reset"
+            class="text-button"
+            title="Вернуть исходные параметры проекта"
+          >
+            Сбросить
+          </button>
+        </div>
+      </aside>
+    </main>
+    <section class="timeline" aria-label="Таймлайн">
+      <div class="transport">
+        <div class="play-controls">
+          <button
+            id="previous"
+            class="icon-button"
+            aria-label="Предыдущий кадр"
+            title="Предыдущий кадр (←)"
+          >
+            ‹</button
+          ><button
+            id="play"
+            class="play-button"
+            aria-label="Играть"
+            title="Играть (пробел)"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M4 2 12 7 4 12Z" fill="currentColor" />
+            </svg></button
+          ><button
+            id="next"
+            class="icon-button"
+            aria-label="Следующий кадр"
+            title="Следующий кадр (→)"
+          >
+            ›</button
+          ><output id="time" aria-label="Текущая позиция" aria-live="off"
+            >00:00.000</output
+          ><span class="duration" id="duration"></span>
+        </div>
+        <div class="timeline-options">
+          <button id="all" class="range-button" aria-pressed="true">
+            Весь ролик</button
+          ><button
+            id="repeat"
+            class="icon-button repeat-button"
+            aria-label="Повторять"
+            aria-pressed="true"
+            title="Повторять"
+          >
+            ↻</button
+          ><select id="speed" aria-label="Скорость">
+            <option value=".25">¼×</option>
+            <option value=".5">½×</option>
+            <option value="1" selected>1×</option></select
+          ><input
+            id="zoom"
+            aria-label="Масштаб таймлайна"
+            title="Масштаб таймлайна"
+            type="range"
+            min="1"
+            max="4"
+            step=".1"
+            value="1"
+          />
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="timeline-scroll">
+          <div id="track">
+            <div id="ruler" class="ruler"></div>
+            <div id="lanes"></div>
+            <div id="actions" class="lane actions"></div>
+            <div id="selection" hidden></div>
+            <div
+              id="playhead"
+              role="slider"
+              tabindex="0"
+              aria-label="Позиция ролика"
+              aria-valuemin="0"
+              aria-valuemax="0"
+              aria-valuenow="0"
+            >
+              <span class="head-grip"></span><span class="head-line"></span>
+            </div>
+            <div id="hit-zone" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <dialog id="project-dialog" aria-labelledby="connect-title">
+      <h1 id="connect-title">Открыть проект</h1>
+      <form id="connect-form">
+        <label for="project-url">Адрес проекта</label
+        ><input
+          id="project-url"
+          name="url"
+          type="text"
+          placeholder="/projects/cards/motion.project.json"
+          aria-describedby="connect-help"
+          required
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <p id="connect-help">Адрес на этом сервере или файл параметров.</p>
+        <div class="dialog-actions">
+          <button type="button" id="file-project">Загрузить файл</button
+          ><button type="button" id="cancel-connect">Отмена</button
+          ><button id="open-project" class="primary">Открыть</button>
+        </div>
+        <p id="project-error" role="alert" hidden></p>
+      </form>
+      <input
+        type="file"
+        id="project-file"
+        accept="application/json,.json"
+        hidden
+      />
+    </dialog>
+    <div id="notice" role="status" hidden></div>
+    <script type="module" src="editor/editor.mjs"></script>
+  </body>
+</html>

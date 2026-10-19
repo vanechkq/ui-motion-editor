@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+  <meta charset="utf-8" /><title>Карточка и детали</title
+  ><link rel="icon" href="data:," /><style>
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      margin: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background: #f4f4f4;
+      font:
+        16px/1.5 -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+      color: #222;
+    }
+    .stage {
+      position: absolute;
+      width: 640px;
+      height: 480px;
+      background: #f4f4f4;
+      overflow: hidden;
+    }
+    .feed,
+    .card,
+    .close {
+      will-change: transform;
+    }
+    .feed {
+      position: absolute;
+      inset: 0;
+      padding: 44px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .card {
+      border-radius: 20px;
+      background: white;
+      width: 267px;
+      height: 270px;
+      padding: 24px;
+    }
+    .card svg {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 25px;
+    }
+    .card h1 {
+      font-size: 24px;
+      line-height: 1.25;
+      margin: 0 0 14px;
+      letter-spacing: -0.7px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #888;
+      margin: 0;
+    }
+    .second {
+      background: #e6e8e7;
+    }
+    .detail {
+      position: absolute;
+      inset: 0;
+      background: white;
+      padding: 64px;
+      clip-path: inset(0);
+      visibility: hidden;
+    }
+    .detail h1 {
+      font-size: 36px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin: 35px 0 18px;
+    }
+    .detail p {
+      max-width: 420px;
+      color: #777;
+    }
+    .close {
+      position: absolute;
+      right: 30px;
+      top: 24px;
+      border: 0;
+      background: #f1f1f1;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 24px;
+    }
+    .shared {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+  </style>
+  <div class="stage">
+    <div class="feed">
+      <div class="card">
+        <svg viewBox="0 0 52 52">
+          <rect width="52" height="52" rx="16" fill="#202020" />
+          <path
+            d="m15 27 8 8 15-18"
+            fill="none"
+            stroke="white"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h1>Проект</h1>
+        <p>Карточка раскрывается в отдельный экран.</p>
+      </div>
+      <div class="card second">
+        <svg viewBox="0 0 52 52">
+          <circle
+            cx="26"
+            cy="26"
+            r="24"
+            fill="none"
+            stroke="#979d9a"
+            stroke-width="2"
+          />
+          <path d="M15 26h22M26 15v22" stroke="#979d9a" stroke-width="2" />
+        </svg>
+        <h1>Следующий</h1>
+      </div>
+    </div>
+    <div class="detail">
+      <button class="close">×</button>
+      <h1>Проект</h1>
+      <p>
+        Другая композиция, другой размер и собственный сценарий. Те же таймлайн,
+        перемотка, пружины и индикатор нажатия.
+      </p>
+    </div>
+    <div class="shared"></div>
+  </div>
+  <script type="module" src="scene.mjs"></script>
+</html>

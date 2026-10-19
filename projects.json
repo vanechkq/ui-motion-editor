@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "projects": [
+    {
+      "manifest": "./projects/cards/motion.project.json",
+      "label": "Карточка и детали"
+    },
+    {
+      "manifest": "./projects/toggle/motion.project.json",
+      "label": "Переключатель"
+    }
+  ]
+}

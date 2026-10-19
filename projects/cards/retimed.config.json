@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "project": "/projects/cards/motion.project.json",
+  "config": {
+    "timeline": {
+      "actions": {
+        "open": { "from": 1, "duration": 1.5 }
+      }
+    }
+  }
+}
