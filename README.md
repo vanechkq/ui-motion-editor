@@ -6,6 +6,12 @@ A small local editor for scripted interface animation. HTML text, CSS shapes and
 
 Two self-contained examples are included: `projects/cards/` (640 × 480, card → details) and `projects/toggle/` (360 × 360, a setting changing state). Both use system fonts and inline SVG. The project is prepared locally; repository name, visibility and source license are still to be chosen by the owner.
 
+## Codex motion skill
+
+The installable [ui-motion-video skill](skills/ui-motion-video/SKILL.md) describes the preview-first workflow and lessons from interface-video production: stable text, shared gestures, smooth screen transitions, deterministic seeking, cache reuse and high-quality export. Install the `skills/ui-motion-video` directory into your Codex skills directory; its helper uses this editor's existing engine.
+
+The skill adds no runtime dependencies. Its helper regression tests run with `node --test skills/ui-motion-video/scripts/motion.test.mjs`.
+
 ## Install and run
 
 Requirements: Node.js 22 or newer, pnpm 11 or newer, and internet access for the initial dependencies/browser download.
