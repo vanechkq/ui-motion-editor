@@ -18,6 +18,12 @@ Use an easing or spring with appropriate start/end velocity. Smoothness is not s
 
 Keyboard, input, action fade and wash should share one progress function and finish together. Keep the article viewport stable while lifting overlays when the source does so. Coordinate sheet travel and backdrop dimming; begin the answer after the sheet has settled when simultaneous motion makes the text hard to follow. Preserve the source typewriter rhythm and punctuation pauses unless asked to change them.
 
+## Focus cues and loops
+
+For Android Settings search/deep-link emphasis, use a stationary local background tint and a soft shimmer behind the original ink. Do not lift, enlarge, rotate, clone or shadow the whole preference cell when the user asks for this native-style cue. Keep attention styling separate from actual press feedback and the shared Tap. Highlight the requested preference card, not only its switch; keep the switch's press origin on its measured geometry. Hold focus long enough to read before pressing. A request for slower pacing usually means longer reading holds, not stretching every transition.
+
+When a demo must loop without reversing a setting, do not invent a second tap, animate a switch off or run the whole film backward. Hold the successful result, then return to the initial composition through a time-driven transition. Avoid overlapping two readable dense text screens. An immutable initial vector layer can provide a stable reset endpoint without changing source text or geometry. Check the last displayed frame against frame zero, and inspect the moving return and next-cycle entrance as well: identical endpoints alone do not prove a good loop. Include return progress in cache keys, and verify the encoded delivery's seam separately from renderer PNG identity.
+
 ## Blur and compositing
 
 A progressive blur is not one uniform filter. Inspect the source's masks, sampling area, cumulative blur and stacking order. Let the effect sample content beyond its visible fade; an input surface that starts mid-line can leak a sharp horizontal edge. Clip or mask each intended band and size it synchronously from the current timeline pose, including lifted buttons. ResizeObserver timing alone is not deterministic.

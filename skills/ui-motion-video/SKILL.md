@@ -23,6 +23,12 @@ Keep editable text, SVG icons and source geometry. Preserve supplied photos, vid
 
 For visual defects and transitions read [references/motion-quality.md](references/motion-quality.md). For imported interactive code, asynchronous seeks, media or cache work read [references/deterministic-preview.md](references/deterministic-preview.md). For shared 3D objects, projected masks or screen-texture handoffs, read [references/3d-transitions.md](references/3d-transitions.md). Read [references/export-quality.md](references/export-quality.md) before exporting or changing quality settings. Do not load every reference for a small timing change.
 
+## Editor interface
+
+For this user's editor, keep playback simple: **one filled seek control, speed segments (¼×, ½×, 1×), and play/pause**. Use a clean scene menu, a large preview and a collapsible parameter panel. Do not reintroduce track lanes, action blocks, timeline zoom, frame-step buttons, playback-range tools or a corner logo unless requested. This is the user's editor preference, not a reason to redesign an unrelated tool.
+
+When changing editor controls or building an editor entry point, read [references/editor-interface.md](references/editor-interface.md). It covers the DialKit interface, binding controls to the existing renderer and the 100 ms interaction grid. Ordinary scene edits do not require rebuilding the editor.
+
 ## Shared gestures and timing
 
 For this user's editor, **every scene, preview and export uses the single agreed Tap** from `engine/tokens.mjs` and `engine/tap.mjs`. Preserve its fill, blur, mask, alpha, scale curve and press/release timing. No custom SVG ring or scene-specific substitute. Appearance changes require an explicit user request; a renderer defect is not permission to change the design.
@@ -31,7 +37,7 @@ Read the actual token values. An unchanged base diameter does not prove the disp
 
 Measure scroll targets from current card geometry. Respect the requested card index and scroll distance; when the user asks for centered focus, derive the offset from the visible viewport center. Let each dynamic card run during its reading hold. Count a requested hold after the appearance or assembly has settled. Keep pauses distinct from transition durations, so softening an animation does not consume reading time.
 
-User timing-control preference: timeline drags use a 100 ms grid and clean numeric formatting. Preserve precise authored source timings and saved manual edits unless the task asks to change them; do not quantize an entire existing film as a side effect.
+User timing-control preference: **scrubbing and any exposed timing drags or numeric timing edits use a 100 ms (0.1 s) grid**, with clean displayed values rather than floating-point tails. Keep playback and export at the authored frame rate. Preserve precise source timings and saved manual edits until the user actually edits that value; do not quantize an entire existing film or saved config as a side effect.
 
 ## Verify, then deliver
 
