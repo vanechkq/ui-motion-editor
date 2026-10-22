@@ -31,3 +31,11 @@ Reuse lossless renderer PNGs or lossless segments, never an old compressed MP4 a
 Review the actual changed action first: entry, middle, overshoot/last motion, settle and the next boundary. Include at least one return from another phase when effects use backdrop sampling, imported state or transition clones. Check semantic invariants as well: correct selected card, one status bar, correct input height, loaded icons, empty input when no submission was requested, and completed answer before the final hold.
 
 Update obsolete hardcoded test times when the approved timeline changes. A failed legacy assertion does not prove a new visual defect, but passing unrelated old checks does not validate the new scenario either. Preserve original failure evidence and run checks against the current scene contract.
+
+## Real controls and reversals
+
+Test the actual UI entry, close/back and keyboard handlers, including an interruption in each direction. A direct call to a transition function does not establish that a visible button is clickable or that its handler chooses the right target. Keep hit testing synchronized with visibility; a transparent control must not intercept the visible one. After `seek()` or `setProgress()`, reconcile the interactive target so Space or the next click moves in the expected direction.
+
+On reversal preserve both pose and velocity at the event boundary. A seek may deliberately set a deterministic state, while a live reversal must not reset the object to rest. Sample immediately before and after the actual event. Do not hide dropped wall-clock time behind a frame-delta cap and then call live playback equivalent to the authored curve; document any deliberate catch-up policy.
+
+Check the final moving frame against the settled endpoint in both directions. Clamp only after the residual is visually negligible; quantify a remaining pixel difference rather than assuming a small progress error is invisible. For intermittent differences, repeat the same pose within the same loaded session before attributing them to font rasterization or cross-session antialiasing.

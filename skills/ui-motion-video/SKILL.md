@@ -9,7 +9,7 @@ Work from the current `motion.project.json`, source contract and local task queu
 
 ## Show changes early
 
-Update the **existing editor and its timeline** immediately. Do not create temporary review pages, a second preview interface or additional approval stages. Keep the current project open and preserve its config. Briefly say what changed and give useful timeline ranges so the user can scrub them.
+Update the **existing editor and its timeline** immediately. Do not create temporary review pages, a second preview interface or additional approval stages. Keep the current project open and preserve its config. A new source revision of the same scene updates that project; do not add another project or tab unless the user asks for a separate variant. Retain prior source snapshots outside the active source path. Briefly say what changed and give useful timeline ranges so the user can scrub them.
 
 The user's review rule: export the full movie only after they have reviewed the preview and explicitly approved rendering. Silence, elapsed time, screenshots, automated checks and your own review are not approval. A direct render request can approve an already reviewed current preview. New edits that require review return to the timeline; do not keep restarting full renders while the user is still correcting it.
 
@@ -21,7 +21,7 @@ Use the project's existing engine. Add scenes through manifests and `projects.js
 
 Keep editable text, SVG icons and source geometry. Preserve supplied photos, videos and explicitly approved static fixtures; do not replace editable controls with screenshots. Check that the selected card, article and answer represent the intended content. If a supplied fixture intentionally differs, surface that mismatch instead of silently inventing replacement content.
 
-For visual defects and transitions read [references/motion-quality.md](references/motion-quality.md). For imported interactive code, asynchronous seeks, media or cache work read [references/deterministic-preview.md](references/deterministic-preview.md). Read [references/export-quality.md](references/export-quality.md) before exporting or changing quality settings. Do not load every reference for a small timing change.
+For visual defects and transitions read [references/motion-quality.md](references/motion-quality.md). For imported interactive code, asynchronous seeks, media or cache work read [references/deterministic-preview.md](references/deterministic-preview.md). For shared 3D objects, projected masks or screen-texture handoffs, read [references/3d-transitions.md](references/3d-transitions.md). Read [references/export-quality.md](references/export-quality.md) before exporting or changing quality settings. Do not load every reference for a small timing change.
 
 ## Shared gestures and timing
 
@@ -35,7 +35,7 @@ User timing-control preference: timeline drags use a 100 ms grid and clean numer
 
 ## Verify, then deliver
 
-Preview and export must use the same time-driven scene function. Review the start, middle, last moving frame, settled frame and next boundary; verify A → B → A seeking and source fidelity. Passing numerical checks does not establish visual quality. After two failed patches to one defect, inspect layout, compositing and state ownership instead of accumulating compensations.
+Preview and export must use the same time-driven scene function. Review the start, middle, last moving frame, settled frame and next boundary; verify A → B → A seeking and source fidelity. Passing numerical checks does not establish visual quality. One mesh and constant object scale do not prove that a clipped 3D phone looks rigid. Compare the visible silhouette and both endpoints against the current approved source. After two failed patches to one defect, inspect layout, compositing and state ownership instead of accumulating compensations.
 
 Report checks honestly: separate structural checks, strict pixel comparisons, visual review and full decoded-video verification. Quantify small browser antialiasing differences instead of calling a failed strict check a pass. Fix material artifacts before delivery. Do not repeatedly run a broad suite without a new change or unresolved concern.
 
