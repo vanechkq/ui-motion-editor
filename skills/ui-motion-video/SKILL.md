@@ -27,7 +27,7 @@ For visual defects and transitions read [references/motion-quality.md](reference
 
 For this user's editor, keep playback simple: **one filled seek control, speed segments (¼×, ½×, 1×), and play/pause**. Use a clean scene menu, a large preview and a collapsible parameter panel. Do not reintroduce track lanes, action blocks, timeline zoom, frame-step buttons, playback-range tools or a corner logo unless requested. This is the user's editor preference, not a reason to redesign an unrelated tool.
 
-When changing editor controls or building an editor entry point, read [references/editor-interface.md](references/editor-interface.md). It covers the DialKit interface, binding controls to the existing renderer and the 100 ms interaction grid. Ordinary scene edits do not require rebuilding the editor.
+For this user, parameter panels and prototype/editor sliders must use **actual DialKit components**, not a hand-built visual imitation. Use its vanilla API for plain JavaScript and retain the existing renderer and settings. When changing controls or building an editor entry point, read [references/editor-interface.md](references/editor-interface.md) for bindings and the 100 ms interaction grid. Ordinary scene edits do not require rebuilding the editor.
 
 ## Shared gestures and timing
 
